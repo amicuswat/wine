@@ -18,7 +18,7 @@ rendered_page = template.render(
     cap3_text="$ 90.00",
 )
 
-with open('index.html', 'w', encoding="utf8") as file:
+with open('index2.html', 'w', encoding="utf8") as file:
     file.write(rendered_page)
 
 server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
