@@ -1,6 +1,7 @@
 import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
+import pandas
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
@@ -28,6 +29,11 @@ if __name__ == '__main__':
     year_of_foundation = 1920
     years_exist = datetime.datetime.now().year - year_of_foundation
     suffix = get_years_suffix(years_exist)
+
+    excel_wines_df = pandas.read_excel('wine.xlsx')
+    excel_wines_dict = excel_wines_df.to_dict('records')
+
+    print(excel_wines_dict)
 
     rendered_page = template.render(
         years_exist=f'{years_exist} {suffix}'
