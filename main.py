@@ -36,7 +36,8 @@ if __name__ == '__main__':
     print(excel_wines_dict)
 
     rendered_page = template.render(
-        years_exist=f'{years_exist} {suffix}'
+        years_exist=f'{years_exist} {suffix}',
+        wines = excel_wines_dict
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
