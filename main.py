@@ -1,4 +1,5 @@
 import datetime
+import pprint
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 import pandas
@@ -34,6 +35,18 @@ if __name__ == '__main__':
     excel_wines_dict = excel_wines_df.to_dict('records')
 
     print(excel_wines_dict)
+
+    excel2_wines_df = pandas.read_excel('wine2.xlsx')
+    excel2_wines_dict = excel2_wines_df.to_dict('records')
+
+    wines_by_cat = {}
+    for wine in excel2_wines_dict:
+        if not wine['Категория'] in wines_by_cat:
+            wines_by_cat[wine['Категория']] = [wine]
+        wines_by_cat[wine['Категория']].append(wine)
+
+    pp = pprint.PrettyPrinter()
+    pp.pprint(wines_by_cat)
 
     rendered_page = template.render(
         years_exist=f'{years_exist} {suffix}',
