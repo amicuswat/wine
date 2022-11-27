@@ -49,9 +49,12 @@ if __name__ == '__main__':
     pp = pprint.PrettyPrinter()
     pp.pprint(wines_by_cat)
 
+    for wine in wines_by_cat:
+        print(wine)
+
     rendered_page = template.render(
         years_exist=f'{years_exist} {suffix}',
-        wines = excel_wines_dict
+        wines=wines_by_cat
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
