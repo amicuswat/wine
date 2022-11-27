@@ -42,8 +42,6 @@ if __name__ == '__main__':
 
     wines_by_cat = collections.defaultdict(list)
     for wine in excel2_wines_dict:
-        # if not wine['Категория'] in wines_by_cat:
-        #     wines_by_cat[wine['Категория']] = [wine]
         wines_by_cat[wine['Категория']].append(wine)
 
     pp = pprint.PrettyPrinter()
