@@ -32,16 +32,11 @@ if __name__ == '__main__':
     years_exist = datetime.datetime.now().year - year_of_foundation
     suffix = get_years_suffix(years_exist)
 
-    excel_wines_df = pandas.read_excel('wine.xlsx')
+    excel_wines_df = pandas.read_excel('wine3.xlsx')
     excel_wines_dict = excel_wines_df.to_dict('records')
 
-    print(excel_wines_dict)
-
-    excel2_wines_df = pandas.read_excel('wine2.xlsx')
-    excel2_wines_dict = excel2_wines_df.to_dict('records')
-
     wines_by_cat = collections.defaultdict(list)
-    for wine in excel2_wines_dict:
+    for wine in excel_wines_dict:
         wines_by_cat[wine['Категория']].append(wine)
 
     pp = pprint.PrettyPrinter()
