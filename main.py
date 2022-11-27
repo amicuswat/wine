@@ -1,3 +1,4 @@
+import collections
 import datetime
 import pprint
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -39,10 +40,10 @@ if __name__ == '__main__':
     excel2_wines_df = pandas.read_excel('wine2.xlsx')
     excel2_wines_dict = excel2_wines_df.to_dict('records')
 
-    wines_by_cat = {}
+    wines_by_cat = collections.defaultdict(list)
     for wine in excel2_wines_dict:
-        if not wine['Категория'] in wines_by_cat:
-            wines_by_cat[wine['Категория']] = [wine]
+        # if not wine['Категория'] in wines_by_cat:
+        #     wines_by_cat[wine['Категория']] = [wine]
         wines_by_cat[wine['Категория']].append(wine)
 
     pp = pprint.PrettyPrinter()
