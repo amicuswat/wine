@@ -1,7 +1,6 @@
 import os
 import collections
 import datetime
-import pprint
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 import pandas
@@ -42,9 +41,6 @@ if __name__ == '__main__':
     wines_by_category = collections.defaultdict(list)
     for wine in excel_wines_dict:
         wines_by_category[wine['Категория']].append(wine)
-
-    pp = pprint.PrettyPrinter()
-    pp.pprint(wines_by_category)
 
     rendered_page = template.render(
         years_exist=f'{years_exist} {suffix}',
