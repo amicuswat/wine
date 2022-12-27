@@ -1,3 +1,4 @@
+import os
 import collections
 import datetime
 import pprint
@@ -5,6 +6,7 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 import pandas
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from dotenv import load_dotenv
 
 
 def get_years_suffix(years):
@@ -21,6 +23,8 @@ def get_years_suffix(years):
 
 
 if __name__ == '__main__':
+    load_dotenv()
+
     env = Environment(
         loader=FileSystemLoader('.'),
         autoescape=select_autoescape(['html', 'xml'])
@@ -32,7 +36,7 @@ if __name__ == '__main__':
     years_exist = datetime.datetime.now().year - year_of_foundation
     suffix = get_years_suffix(years_exist)
 
-    excel_wines_df = pandas.read_excel('wine.xlsx')
+    excel_wines_df = pandas.read_excel(os.environ['DATA_FILE'])
     excel_wines_dict = excel_wines_df.to_dict('records')
 
     wines_by_cat = collections.defaultdict(list)
