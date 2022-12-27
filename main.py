@@ -39,16 +39,16 @@ if __name__ == '__main__':
     excel_wines_df = pandas.read_excel(os.environ['DATA_FILE'])
     excel_wines_dict = excel_wines_df.to_dict('records')
 
-    wines_by_cat = collections.defaultdict(list)
+    wines_by_category = collections.defaultdict(list)
     for wine in excel_wines_dict:
-        wines_by_cat[wine['Категория']].append(wine)
+        wines_by_category[wine['Категория']].append(wine)
 
     pp = pprint.PrettyPrinter()
-    pp.pprint(wines_by_cat)
+    pp.pprint(wines_by_category)
 
     rendered_page = template.render(
         years_exist=f'{years_exist} {suffix}',
-        wines=wines_by_cat
+        wines=wines_by_category
     )
 
     with open('index.html', 'w', encoding="utf8") as file:
