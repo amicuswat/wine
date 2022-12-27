@@ -32,7 +32,7 @@ if __name__ == '__main__':
     years_exist = datetime.datetime.now().year - year_of_foundation
     suffix = get_years_suffix(years_exist)
 
-    excel_wines_df = pandas.read_excel('wine3.xlsx')
+    excel_wines_df = pandas.read_excel('wine.xlsx')
     excel_wines_dict = excel_wines_df.to_dict('records')
 
     wines_by_cat = collections.defaultdict(list)
