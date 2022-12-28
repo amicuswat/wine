@@ -36,6 +36,7 @@ if __name__ == '__main__':
     suffix = get_years_suffix(exist_years)
 
     excel_wines_df = pandas.read_excel(os.environ['DATA_FILE'])
+    excel_wines_df = excel_wines_df.fillna('-')
     excel_wines_dict = excel_wines_df.to_dict('records')
 
     wines_by_category = collections.defaultdict(list)
