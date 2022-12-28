@@ -78,24 +78,29 @@
 						<p>Вино — один из самых благородных и многогранных напитков в мире! Виноделие берёт своё начало с незапамятных времён. Вино упоминается в Библии и Коране, греческой и римской мифологии, где были свои боги вина (к примеру, Дионис). Стоит отметить, что почти у каждого народа существует своя легенда, повествующая о появлении божественного эликсира — вина. </p>
 					</div>
 				</div>
-                {% for cat in wines %}
+                {% for category, drinks in wines.items() %}
                   <div class="row">
                       <div class="col-12 section-title text-center mb-5">
-                          <h2 class="d-block">{{cat}}</h2> </div>
+                          <h2 class="d-block">{{category}}</h2>
+                      </div>
                   </div>
                   <div class="row">
-                    {% for wine in wines[cat] %}
+                    {% for drink in drinks %}
                       <div class="col-lg-4 mb-5 col-md-6">
-                          <div class="wine_v_1 text-center pb-4 pt-5"> <img src="images/{{wine.Картинка}}" alt="Image" class="img-fluid"> {% if wine.Акция == 'Выгодное предложение' %} <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;"> {% endif %}
-                              <div>
-                                  <h3 class="heading mt-3 mb-3 text-dark">{{wine.Название}}</h3>
-                                  <p>
-                                    {% if wine.Категория != 'Напитки' %} {{wine.Сорт}}
-                                      <br/>
-                                    {% endif %}
-                                    <span class="price">{{wine.Цена}} р.</span>
-                                  </p>
-                              </div>
+                          <div class="wine_v_1 text-center pb-4 pt-5"> <img src="images/{{drink.Картинка}}" alt="Image" class="img-fluid">
+                            {% if drink.Акция == 'Выгодное предложение' %}
+                              <img src="assets/profitable.png" style="width:10rem;height: 10rem;position:absolute;right: -20px;top: -20px;">
+                            {% endif %}
+                            <div>
+                                <h3 class="heading mt-3 mb-3 text-dark">{{drink.Название}}</h3>
+                                <p>
+                                  {% if drink.Категория != 'Напитки' %}
+                                    {{drink.Сорт}}
+                                    <br/>
+                                  {% endif %}
+                                  <span class="price">{{drink.Цена}} р.</span>
+                                </p>
+                            </div>
                           </div>
                       </div>
                     {% endfor %}
