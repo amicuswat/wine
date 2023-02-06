@@ -48,8 +48,6 @@ if __name__ == '__main__':
         wines=wines_by_category
     )
 
-    print(wines_by_category)
-
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
 
